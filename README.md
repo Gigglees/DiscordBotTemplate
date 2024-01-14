@@ -11,7 +11,7 @@ Now you're going to need to get some information, like your discord dev applicat
 
 Now once done, grab your token from your application and then put it inside the "" in config.json inside the token section.
 
-After that, you're good to invite your bot to your server. You can do this here https://discord.com/oauth2/authorize?client_id=[client ID goes here]&permissions=[your scope goes here, to make things simple just do 8 for admin]&scope=bot
+After that, you're good to invite your bot to your server. You can do this here just replace the [client_ID_goes_here] with your clientID found in discord dev portal https://discord.com/oauth2/authorize?client_id=[client_ID_goes_here]&permissions=8&scope=bot
 
 Once your bot is on your server, head back to your terminal and type "node index.js" This will start your bot and everything should work perfectly. To turn it off, just go to your terminal again and CTRL + C.
 
