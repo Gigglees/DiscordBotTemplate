@@ -6,6 +6,8 @@
 
 ### How to use:
 
+Make sure you have Node.js and npm (Node Package Manager) installed on your machine. You can download them from https://nodejs.org/.
+
 First, download a copy of this code.
 Then open your text editor and navigate to the terminal. 
 You're going to need to import a few things first
