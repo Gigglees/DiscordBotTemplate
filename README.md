@@ -1,5 +1,9 @@
 ### THIS IS THE JAVASCRIPT VERSION!!!
 
+- For the Typescript version visit: https://github.com/Gigglees/DiscordBotTemplate-Typescript
+
+- For the Python version visit: https://github.com/Gigglees/DiscordBotTemplate-Python
+
 ### How to use:
 
 First, download a copy of this code.
