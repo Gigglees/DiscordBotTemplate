@@ -1,3 +1,5 @@
+### THIS IS THE JAVASCRIPT VERSION!!!
+
 ### How to use:
 
 First, download a copy of this code.
