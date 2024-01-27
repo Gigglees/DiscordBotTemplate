@@ -4,6 +4,10 @@
 
 - For the Python version visit: https://github.com/Gigglees/DiscordBotTemplate-Python
 
+### Documentation for discord.js
+- https://discord.js.org/docs/packages/discord.js/main
+- https://discord.com/developers/docs/intro
+
 ### How to use:
 
 Make sure you have Node.js and npm (Node Package Manager) installed on your machine. You can download them from https://nodejs.org/.
