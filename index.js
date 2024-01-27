@@ -28,6 +28,7 @@ const client = new Client({
 /* This is "onReady", pretty much when the bot starts, this runs. you can get it to anything really,
 including sending embed messages, changing the bot status, sending console logs, sending plain messages and more */
 client.on('ready', () => {
+	console.log(`Logged in as ${client.user.tag}`); // This is just a console log, when your bot is online it will log it to the console!
 	/* This is how you change the bot status within discord. pretty simple. So on ready the client.user will setActivity of the bot*/
 	client.user.setActivity('i am a discord bot.', {
 		type: ActivityType.Playing,
