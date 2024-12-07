@@ -1,30 +1,68 @@
-### THIS IS THE JAVASCRIPT VERSION!!!
+# Discord Bot Template (JavaScript)
 
-- For the Typescript version visit: https://github.com/Gigglees/DiscordBotTemplate-Typescript
+A modern Discord bot template using discord.js v14+ with support for both traditional and slash commands.
 
-- For the Python version visit: https://github.com/Gigglees/DiscordBotTemplate-Python
+## Alternative Versions
 
-### Documentation for discord.js
-- https://discord.js.org/docs/packages/discord.js/main
-- https://discord.com/developers/docs/intro
+- [TypeScript Version](https://github.com/Gigglees/DiscordBotTemplate-Typescript)
+- [Python Version](https://github.com/Gigglees/DiscordBotTemplate-Python)
 
-### How to use:
+## Features
 
-Make sure you have Node.js and npm (Node Package Manager) installed on your machine. You can download them from https://nodejs.org/.
+- Modern discord.js v14+ implementation
+- Support for both traditional and slash commands
+- Environment variable configuration
+- Built-in command handler
+- Latency monitoring
+- Automatic slash command registration
+- Proper error handling
 
-First, download a copy of this code.
-Then open your text editor and navigate to the terminal. 
-You're going to need to import a few things first
+## Prerequisites
 
-In the terminal, go ahead and type "npm init" and follow the instruction given in the terminal
-once done, you're going to need to import discord.js at the latest version. So go ahead and type "npm install discord.js@latest" from there you are set up.
+- Node.js 16.9.0 or higher
+- npm (Node Package Manager)
+- A Discord Bot Token
 
-Now you're going to need to get some information, like your discord dev application token. This can be found here, if you don't already have an application you will have to make one, which is simple enough https://discord.com/developers. If you do struggle to create an application, help can be found here https://www.youtube.com/watch?v=OY6QoPNJPNw
+## Setup Instructions
 
-Now once done, grab your token from your application and then put it inside the "" in config.json inside the token section.
+1. **Install Dependencies**
+2. **Configuration**
 
-After that, you're good to invite your bot to your server. You can do this here just replace the [client_ID_goes_here] with your clientID found in discord dev portal https://discord.com/oauth2/authorize?client_id=[client_ID_goes_here]&permissions=8&scope=bot
+- Create a `.env` file in the root directory
+- Add your bot credentials:
+  ```
+  DISCORD_TOKEN=your_token_here
+  CLIENT_ID=your_client_id_here
+  GUILD_ID=your_guild_id_here
+  CHANNEL_ID=your_channel_id_here
+  PREFIX=/
+  ```
 
-Once your bot is on your server, head back to your terminal and type "node index.js" This will start your bot and everything should work perfectly. To turn it off, just go to your terminal again and CTRL + C.
+3. **Bot Token**
 
-Then the world is your oyster, you have your own bot that you can make changes to as you please.
+- Create a Discord application at [Discord Developer Portal](https://discord.com/developers)
+- Create a bot user and copy the token
+- Add token to your `.env` file
+
+4. **Invite Bot**
+   Use this URL to invite your bot (replace CLIENT_ID):
+
+5. **Start the Bot**
+
+## Available Commands
+
+- `/ping` - Check bot latency
+- `/hello` - Simple greeting command
+
+## Development
+
+Feel free to modify and extend the commands in the `commands` folder. Each command follows a modular structure for easy maintenance.
+
+## Documentation
+
+- [Discord.js Documentation](https://discord.js.org/docs/packages/discord.js/main)
+- [Discord Developer Portal](https://discord.com/developers/docs/intro)
+
+## License
+
+This project is licensed under the MIT License - see the LICENSE file for details.

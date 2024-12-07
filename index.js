@@ -1,5 +1,8 @@
-/*At the top of your file should include all imports / intents and variables (just my personal preference but i like tidy files)
-All documentation can be found here: https://discord.js.org/docs/packages/discord.js/14.14.1 */
+/**
+ * Main entry point for the Discord bot
+ * Using discord.js v14+ with REST API and Slash Commands support
+ * Documentation: https://discord.js.org/docs/packages/discord.js/main
+ */
 
 require('dotenv').config();
 const {
@@ -7,16 +10,24 @@ const {
 	GatewayIntentBits,
 	ActivityType,
 	Collection,
+	Routes,
+	REST,
 } = require('discord.js');
 
-/*Intents are bitwise values that can be ORed ( | ) to indicate which events (or groups of events) you want Discord to send your app. 
-A list of intents and their corresponding events are listed in the intents section.
-read more here https://discord.com/developers/docs/topics/gateway#:~:text=Intents%20are%20bitwise%20values%20that,listed%20in%20the%20intents%20section.*/
+/**
+ * Intents Configuration
+ * Guilds: Enables server-related events
+ * GuildMessages: Enables message-related events in servers
+ * MessageContent: Required for accessing message content (Privileged Intent)
+ * For more information on intents, visit:
+ * https://discord.com/developers/docs/topics/gateway#privileged-intents
+ */
 
-/*These are commands, the code can be found in the commands folder. */
+// Import command modules
 const pingCommand = require('./commands/ping');
 const helloCommand = require('./commands/hello');
 
+// Initialize Discord client with required intents
 const client = new Client({
 	intents: [
 		GatewayIntentBits.Guilds,
@@ -25,8 +36,11 @@ const client = new Client({
 	],
 });
 
-/* This is "onReady", pretty much when the bot starts, this runs. you can get it to anything really,
-including sending embed messages, changing the bot status, sending console logs, sending plain messages and more */
+/**
+ * Bot Ready Event Handler
+ * Triggers once when the bot successfully connects to Discord
+ * Sets up initial bot status and logs connection confirmation
+ */
 client.once('ready', () => {
 	console.log(`Logged in as ${client.user.tag}`); // This is just a console log, when your bot is online it will log it to the console!
 	/* This is how you change the bot status within discord. pretty simple. So on ready the client.user will setActivity of the bot*/
@@ -62,3 +76,64 @@ client.commands.set('hello', helloCommand);
 
 /* Login with token from .env */
 client.login(process.env.DISCORD_TOKEN);
+
+/* Create REST instance */
+const rest = new REST({ version: '10' }).setToken(process.env.DISCORD_TOKEN);
+
+/* Prepare commands for registration */
+const commands = [
+	{
+		name: 'ping',
+		description: 'Replies with Pong!',
+	},
+	{
+		name: 'hello',
+		description: 'Replies with Hello!',
+	},
+];
+
+/* Function to register commands */
+async function registerCommands() {
+	try {
+		console.log('Started refreshing application (/) commands.');
+
+		await rest.put(
+			Routes.applicationGuildCommands(
+				process.env.CLIENT_ID,
+				process.env.GUILD_ID
+			),
+			{ body: commands }
+		);
+
+		console.log('Successfully reloaded application (/) commands.');
+	} catch (error) {
+		console.error(error);
+	}
+}
+
+// Register commands when bot starts
+(async () => {
+	try {
+		await registerCommands();
+	} catch (error) {
+		console.error('Error registering commands:', error);
+	}
+})();
+
+// Interaction handler
+client.on('interactionCreate', async interaction => {
+	if (!interaction.isCommand()) return;
+
+	const command = client.commands.get(interaction.commandName);
+	if (!command) return;
+
+	try {
+		await command.execute(interaction);
+	} catch (error) {
+		console.error(error);
+		await interaction.reply({
+			content: 'There was an error executing this command!',
+			ephemeral: true,
+		});
+	}
+});
