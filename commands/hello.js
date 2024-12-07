@@ -3,7 +3,7 @@
 module.exports = {
 	name: 'hello',
 	description: 'Hello command',
-	execute(message, args) {
-		message.channel.send('Hello!');
+	async execute(message, args) {
+		await message.channel.send('Hello!');
 	},
 };

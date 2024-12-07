@@ -3,7 +3,9 @@
 module.exports = {
 	name: 'ping',
 	description: 'Ping command',
-	execute(message, args) {
-		message.channel.send('Pong!');
+	async execute(message, args) {
+		const reply = await message.channel.send('Pinging...');
+		const latency = reply.createdTimestamp - message.createdTimestamp;
+		await reply.edit(`Pong! Latency: ${latency}ms`);
 	},
 };
